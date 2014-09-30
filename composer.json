@@ -1,0 +1,81 @@
+{
+    "name": "3ev/wordpress-starter",
+
+    "type": "project",
+
+    "license": "MIT",
+
+    "description": "3ev's WordPress starter kit",
+
+    "homepage": "https://github.com/3ev/wordpress-starter/",
+
+    "authors": [
+        {
+            "name": "3ev",
+            "email": "info@3ev.com",
+            "homepage": "http://www.3ev.com"
+        }
+    ],
+
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        },
+
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress",
+                "type": "webroot",
+                "version": "4.0",
+                "dist": {
+                "type": "zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/4.0.zip"
+                },
+                "require": {
+                    "fancyguy/webroot-installer": "1.1"
+                }
+            }
+        },
+
+        {
+            "type": "vcs",
+            "url": "https://github.com/3ev/phingy"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.2",
+        "wordpress": "4.0",
+        "fancyguy/webroot-installer": "~1.1",
+        "vlucas/phpdotenv": "~1.0",
+        "3ev/phingy": "~0.8",
+        "wp-cli/wp-cli": "~0.17",
+        "wpackagist-theme/twentyfourteen": "~1.2"
+    },
+
+    "scripts": {
+        "post-install-cmd": [
+            "Ev\\Phingy\\ComposerScripts::postInstall"
+        ]
+    },
+
+    "config": {
+        "preferred-install": "dist",
+        "bin-dir": "bin"
+    },
+
+    "minimum-stability": "dev",
+
+    "prefer-stable": true,
+
+    "extra": {
+        "installer-paths": {
+            "public/app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "public/app/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "webroot-dir": "public/wp",
+        "webroot-package": "wordpress"
+    }
+}

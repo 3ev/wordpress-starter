@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="" basedir="." default="...">
+
+
+
+
+    <!-- ==================================== -->
+    <!--              Properties              -->
+    <!-- ==================================== -->
+
+
+
+
+    <property name="build.environment" value="default" />
+    <property name="build.public_dir" value="${build.path}/public" />
+    <property name="build.log_dir" value="${build.path}/storage/logs" />
+    <property name="db.data_path" value="${build.path}/storage/database" />
+
+
+
+
+    <!-- ==================================== -->
+    <!--             Dependencies             -->
+    <!-- ==================================== -->
+
+
+
+
+    <import file="${phingy.path}/scripts/core/database.xml" />
+
+
+
+
+    <!-- ==================================== -->
+    <!--                Tasks                 -->
+    <!-- ==================================== -->
+
+
+
+
+    <target name="project:config" depends="build:config, db:config" hidden="true">
+        <echo msg="Running project:config" />
+
+        <if>
+            <not>
+                <isset property="app.debug" />
+            </not>
+            <then>
+                <propertyPrompt
+                    propertyName="app.debug"
+                    defaultValue=""
+                    promptText="Enable debug? (1,0)"
+                    useExistingValue="true"
+                />
+
+                <phingcall target="build:save_config" />
+            </then>
+        </if>
+    </target>
+
+
+    <target name="project:build:before" hidden="true">
+        <echo msg="Running project:build:before" />
+    </target>
+
+
+    <target name="project:build:after" hidden="true">
+        <echo msg="Running project:build:after" />
+        <phingcall target="wordpress:permissions" />
+    </target>
+
+
+    <target name="project:build:housekeeping" hidden="true">
+        <echo msg="Running project:build:housekeeping" />
+    </target>
+
+
+    <!--
+        Set WordPress permissions.
+    -->
+
+    <target name="wordpress:permissions" depends="project:config" hidden="true">
+        <echo msg="Setup permissions for WordPress..." />
+        <mkdir dir="${build.public_dir}/app/uploads" />
+        <chown file="${build.public_dir}/app/uploads" user="www-data.www-data" failonerror="false" />
+        <chmod file="${build.public_dir}/app/uploads" mode="0666" failonerror="false" />
+        <echo msg="...done" />
+    </target>
+
+
+    <!--
+        Install a new WordPress site.
+    -->
+
+    <target name="wordpress:install" depends="project:config, db:create" description="Install a new WordPress site">
+        <echo msg="Installing WordPress..." />
+
+        <input propertyname="wordpress.site_title" defaultValue="My WordPress Site">WordPress site title?</input>
+        <input propertyname="wordpress.admin_user" defaultValue="">Admin username?</input>
+        <input propertyname="wordpress.admin_pass" defaultValue="">Admin password?</input>
+        <input propertyname="wordpress.admin_email" defaultValue="">Admin email?</input>
+
+        <exec command="bin/wp core install --url='&quot;&quot;' --title='${wordpress.site_title}' --admin_user='${wordpress.admin_user}' --admin_password='${wordpress.admin_pass}' --admin_email='${wordpress.admin_email}'" passthru="true" />
+
+        <echo msg="...installation complete. Access your site at http://${build.url}/" />
+    </target>
+
+
+
+
+</project>

@@ -1,0 +1,49 @@
+# Filesystem & Dev
+
+.DS_Store
+.phing_targets
+
+# WordPress
+
+public/wp
+
+# Application
+
+public/app/plugins/*
+!public/app/plugins/.gitkeep
+public/app/upgrade
+public/app/uploads/*
+public/app/themes/*
+!public/app/themes/.gitkeep
+
+# Phingy
+
+build.xml
+config/phing.properties
+
+# Composer
+
+vendor/*
+
+# NPM
+
+node_modules
+
+# Bundler
+
+.bundle/
+
+# Data
+
+storage/logs/*
+!storage/logs/.gitkeep
+storage/database/*
+!storage/database/.gitkeep
+
+# Misc.
+
+bin/
+.env
+.sass-cache
+config/httpd.conf
+config/crontab

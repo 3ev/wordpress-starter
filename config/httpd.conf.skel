@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    ServerName ${build.url}
+    DocumentRoot ${build.public_dir}
+
+    <Directory />
+        Options +FollowSymLinks
+    </Directory>
+
+    <Directory ${build.path}>
+      Options All Multiviews -Indexes
+      AllowOverride All
+    </Directory>
+
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined
+    CustomLog ${build.log_dir}/apache_access.log combined
+    ErrorLog  ${build.log_dir}/apache_error.log
+
+    AllowEncodedSlashes On
+</VirtualHost>
