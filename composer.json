@@ -55,6 +55,12 @@
         "wpackagist-theme/twentyfourteen": "~1.2"
     },
 
+    "autoload": {
+        "psr-4": {
+            "": "lib/tasks/"
+        }
+    },
+
     "scripts": {
         "post-install-cmd": [
             "Ev\\Phingy\\ComposerScripts::postInstall"

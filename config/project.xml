@@ -67,6 +67,7 @@
     <target name="project:build:after" hidden="true">
         <echo msg="Running project:build:after" />
         <phingcall target="wordpress:permissions" />
+        <phingcall target="wordpress:generatesalts" />
     </target>
 
 
@@ -103,6 +104,26 @@
         <exec command="bin/wp core install --url='&quot;&quot;' --title='${wordpress.site_title}' --admin_user='${wordpress.admin_user}' --admin_password='${wordpress.admin_pass}' --admin_email='${wordpress.admin_email}'" passthru="true" />
 
         <echo msg="...installation complete. Access your site at http://${build.url}/" />
+    </target>
+
+
+    <!--
+        Generate fresh WordPress salts.
+    -->
+
+    <taskdef name="addsalt" classname="Tev\Phing\Wordpress\GenerateSaltTask" />
+    <target name="wordpress:generatesalts" depends="project:config" description="Generate fresh WordPress salts">
+        <delete file="${build.path}/.env.salts" quiet="true" />
+        <touch file="${build.path}/.env.salts" />
+
+        <addsalt path="${build.path}/.env.salts" name="AUTH_KEY" />
+        <addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_KEY" />
+        <addsalt path="${build.path}/.env.salts" name="LOGGED_IN_KEY" />
+        <addsalt path="${build.path}/.env.salts" name="NONCE_KEY" />
+        <addsalt path="${build.path}/.env.salts" name="AUTH_SALT" />
+        <addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_SALT" />
+        <addsalt path="${build.path}/.env.salts" name="LOGGED_IN_SALT" />
+        <addsalt path="${build.path}/.env.salts" name="NONCE_SALT" />
     </target>
 
 
