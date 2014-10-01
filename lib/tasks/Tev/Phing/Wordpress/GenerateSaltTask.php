@@ -6,6 +6,10 @@ use Task, Project;
 /**
  * This task will generate a WordPress salt in .env file format, and append
  * a specified file.
+ *
+ * The idea for this is borrowed from the Bedrock project:
+ *
+ * https://github.com/roots/bedrock/blob/master/scripts/Roots/Bedrock/Installer.php
  */
 class GenerateSaltTask extends Task
 {
