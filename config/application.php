@@ -10,14 +10,34 @@ define('APP_STORAGE_DIR', APP_ROOT_DIR . '/storage');
 define('APP_LOG_DIR', APP_STORAGE_DIR . '/logs');
 
 /*
- * Use Dotenv to set required environment variables and load .env file in root
+ * Use Dotenv to set required environment variables and load .env and
+ * .env.salts file in root
  */
 
 if (file_exists(APP_ROOT_DIR . '/.env')) {
     Dotenv::load(APP_ROOT_DIR);
 }
 
-Dotenv::required(array('DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL'));
+if (file_exists(APP_ROOT_DIR . '/.env.salts')) {
+    Dotenv::load(APP_ROOT_DIR, '.env.salts');
+}
+
+Dotenv::required(array(
+    'DB_HOST',
+    'DB_NAME',
+    'DB_USER',
+    'DB_PASSWORD',
+    'WP_HOME',
+    'WP_SITEURL',
+    'AUTH_KEY',
+    'SECURE_AUTH_KEY',
+    'LOGGED_IN_KEY',
+    'NONCE_KEY',
+    'AUTH_SALT',
+    'SECURE_AUTH_SALT',
+    'LOGGED_IN_SALT',
+    'NONCE_SALT'
+));
 
 /*
  * Debugging/errors
