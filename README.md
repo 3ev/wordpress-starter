@@ -1,4 +1,4 @@
-# 3ev WordPress
+# 3ev WordPress Starter
 
 Our base WordPress build, that borrows heavily from many of the ideas in the
 excellent [Bedrock project](https://github.com/roots/bedrock).
@@ -61,3 +61,32 @@ $ bin/phing build:server
 ```
 
 to get a working copy of your site.
+
+## Deploying with Capistrano
+
+Capistrano comes setup and ready to go with this project (via [Bundler](http://bundler.io/)),
+to make deployment as straightforward as possible.
+
+After running `bundle install`, follow the guides to setting up a deployment
+user and the initial directory on http://capistranorb.com/. Then, modify the
+`:application` and `:repo_url` settings in `config/deploy.rb` and create a stage
+file in `config/deploy/` (the `staging.rb` file is there as an example for you
+to start with).
+
+After that you can deploy your site with a single command:
+
+```sh
+$ bundle exec cap [stage] deploy
+```
+
+**Note:** You'll need to setup your database separately after your first
+deployment.
+
+### Deploying a different branch
+
+By default, your `master` branch will be deployed, but you can deploy a feature
+branch for testing by setting the `BRANCH` environment variable, like:
+
+```sh
+$ BRANCH=cool-new-feature bundle exec cap [stage] deploy
+```
