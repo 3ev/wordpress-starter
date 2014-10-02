@@ -44,10 +44,14 @@ Dotenv::required(array(
  */
 
 define('APP_DEBUG', (boolean) getenv('APP_DEBUG'));
-ini_set('display_errors', APP_DEBUG ? 'On' : 'Off');
+
+// Always log errors
+
+ini_set('log_errors', 1);
 ini_set('error_log', APP_LOG_DIR . '/wp_debug.log');
+
 define('WP_DEBUG', true);
-define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_LOG', false);
 define('WP_DEBUG_DISPLAY', APP_DEBUG);
 define('SCRIPT_DEBUG', APP_DEBUG);
 

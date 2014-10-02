@@ -1,0 +1,15 @@
+namespace :deploy do
+
+  #
+  # This task simply runs `phing build`.
+  #
+  desc 'Build application'
+  task :build do
+    on roles(:app) do
+      within release_path do
+        execute :phing, 'build'
+      end
+    end
+  end
+
+end
