@@ -1,0 +1,18 @@
+namespace :deploy do
+
+  #
+  # This tasks symlinks the new Apache configuration and reloads Apache
+  # to load the new config.
+  #
+  # This essentially 'starts' the new build.
+  #
+  desc 'Symlink Apache config and reload'
+  task :start_server do
+    on roles(:app) do
+      within current_path do
+        execute :phing, 'build:server'
+      end
+    end
+  end
+
+end

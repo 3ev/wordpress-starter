@@ -1,0 +1,36 @@
+namespace :deploy do
+
+  #
+  # This task generates the phing.properties file required by the build.
+  #
+  # Some properties should be set in the server config.
+  #
+  desc 'Generate build properties file'
+  task :generate_properties do
+    on roles(:app) do
+
+      # Generate properties
+
+      set :phing_properties, {
+
+        'build.basename' => File.basename("#{fetch :deploy_to}"),
+        'build.name'     => File.basename("#{fetch :deploy_to}"),
+        'build.url'      => "#{fetch :build_url}",
+        'db.host'        => "#{fetch :db_host}",
+        'db.user'        => "#{fetch :db_user}",
+        'db.pass'        => "#{fetch :db_pass}",
+        'db.name'        => "#{fetch :db_name}",
+        'db.root.user'   => "#{fetch :db_root_user}",
+        'db.root.pass'   => "#{fetch :db_root_pass}",
+        'app.debug'      => "#{fetch :app_debug}"
+
+      }.map { |k, v| "#{k}=#{v}" }.join("\n")
+
+      # Save as file in build
+
+      upload! StringIO.new(fetch(:phing_properties)), "#{release_path}/config/phing.properties"
+
+    end
+  end
+
+end
