@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "068bb3ebc5134f17b2831340c0e14f86",
+    "hash": "22e547fb3cdf3e380c52e674620ba74e",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -43,6 +43,31 @@
                 "issues": "https://github.com/3ev/phingy/issues"
             },
             "time": "2014-09-30 15:11:10"
+        },
+        {
+            "name": "3ev/wordpress-starter-theme",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/3ev/wordpress-starter-theme.git",
+                "reference": "e24e40ac1d4db48b0be408f6154419d61b6ed83a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/3ev/wordpress-starter-theme/zipball/e24e40ac1d4db48b0be408f6154419d61b6ed83a",
+                "reference": "e24e40ac1d4db48b0be408f6154419d61b6ed83a",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme",
+            "description": "Wordpress starter theme for starting a theme on Wordpress",
+            "support": {
+                "source": "https://github.com/3ev/wordpress-starter-theme/tree/0.1.3",
+                "issues": "https://github.com/3ev/wordpress-starter-theme/issues"
+            },
+            "time": "2014-10-17 14:48:12"
         },
         {
             "name": "composer/installers",
@@ -471,25 +496,30 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "1.0.6",
+            "version": "v1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "2821c024b4c14c7e6d1ff99e063ae9532620beb2"
+                "reference": "56c252d48dce336da97926591aed71805203815b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2821c024b4c14c7e6d1ff99e063ae9532620beb2",
-                "reference": "2821c024b4c14c7e6d1ff99e063ae9532620beb2",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/56c252d48dce336da97926591aed71805203815b",
+                "reference": "56c252d48dce336da97926591aed71805203815b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Dotenv": "src/"
@@ -503,8 +533,7 @@
                 {
                     "name": "Vance Lucas",
                     "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com",
-                    "role": "Developer"
+                    "homepage": "http://www.vancelucas.com"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -514,7 +543,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2014-01-31 16:18:39"
+            "time": "2014-10-16 14:50:21"
         },
         {
             "name": "wordpress",
@@ -637,43 +666,15 @@
                 "wordpress"
             ],
             "time": "2014-09-12 00:49:44"
-        },
-        {
-            "name": "wpackagist-theme/twentyfourteen",
-            "version": "1.2",
-            "source": {
-                "type": "svn",
-                "url": "http://themes.svn.wordpress.org/twentyfourteen/",
-                "reference": "1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "http://wordpress.org/themes/download/twentyfourteen.1.2.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-theme",
-            "homepage": "http://wordpress.org/themes/twentyfourteen/"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": true,
     "platform": {
         "php": ">=5.3.2"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
