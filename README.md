@@ -5,13 +5,10 @@ excellent [Bedrock project](https://github.com/roots/bedrock).
 
 ## Getting started
 
-To start a new site, fork and/or clone this project, and install dependencies
-with [Composer](https://getcomposer.org/):
+To start a new site, use the Composer `create-project` command:
 
 ```sh
-$ git clone git@github.com:3ev/wordpress.git my-wordpress-site/
-$ cd my-wordpress-site/
-$ composer install
+$ composer create-project 3ev/wordpress-starter -s dev
 ```
 
 ## Installing & running
