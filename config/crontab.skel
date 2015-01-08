@@ -1,0 +1,7 @@
+# Don't send any cron emails
+
+MAILTO=""
+
+# Run Wordpress scheduled jobs every 5 minutes
+
+*/5 * * * * root curl http://${build.url}/wp/wp-cron.php?doing_wp_cron

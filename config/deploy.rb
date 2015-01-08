@@ -56,4 +56,8 @@ namespace :deploy do
 
   after :publishing, :start_server
 
+  # After publishing a new release or rolling back, setup project crons
+
+  after :publishing, :start_crons
+
 end
