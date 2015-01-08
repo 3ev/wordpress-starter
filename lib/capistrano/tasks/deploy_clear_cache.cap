@@ -1,0 +1,17 @@
+namespace :deploy do
+
+  #
+  # This task runs `wp quick-cache clear`.
+  #
+  # This will clear out all site caches.
+  #
+  desc 'Clear Wordpress cache'
+  task :clear_cache do
+    on roles(:app) do
+      within release_path do
+        execute :web_wp, 'quick-cache', 'clear'
+      end
+    end
+  end
+
+end

@@ -56,6 +56,10 @@ namespace :deploy do
 
   after :publishing, :start_server
 
+  # After publishing a new release or rolling back, clear the Wordpress cache
+
+  after :publishing, :clear_cache
+
   # After publishing a new release or rolling back, setup project crons
 
   after :publishing, :start_crons
