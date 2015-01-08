@@ -74,7 +74,7 @@ define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
  * Caching
  */
 
-define('WP_CACHE', false);
+define('WP_CACHE', true);
 
 /*
  * DB settings
