@@ -104,16 +104,16 @@
         },
         {
             "name": "3ev/wordpress-core",
-            "version": "v1.0.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/wordpress-core.git",
-                "reference": "b7da925a8f601b49cc9bac6403580442c68f91a3"
+                "reference": "8e8ba3ea920525b8fc83b82cc088864aecfc57cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/b7da925a8f601b49cc9bac6403580442c68f91a3",
-                "reference": "b7da925a8f601b49cc9bac6403580442c68f91a3",
+                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/8e8ba3ea920525b8fc83b82cc088864aecfc57cb",
+                "reference": "8e8ba3ea920525b8fc83b82cc088864aecfc57cb",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,7 @@
                 "modern",
                 "wordpress"
             ],
-            "time": "2015-01-08 16:58:15"
+            "time": "2015-02-12 11:45:53"
         },
         {
             "name": "composer/installers",
