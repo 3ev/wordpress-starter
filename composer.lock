@@ -43,16 +43,16 @@
         },
         {
             "name": "3ev/quick-cache-cli",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/quick-cache-cli.git",
-                "reference": "44aff1687a2e2d957e062990e0a7199c6a8acd05"
+                "reference": "6b0ea544dcbfc7c2a1780c1983c69de3285bd814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/quick-cache-cli/zipball/44aff1687a2e2d957e062990e0a7199c6a8acd05",
-                "reference": "44aff1687a2e2d957e062990e0a7199c6a8acd05",
+                "url": "https://api.github.com/repos/3ev/quick-cache-cli/zipball/6b0ea544dcbfc7c2a1780c1983c69de3285bd814",
+                "reference": "6b0ea544dcbfc7c2a1780c1983c69de3285bd814",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "wordpress",
                 "wp-cli"
             ],
-            "time": "2014-12-09 11:22:16"
+            "time": "2015-02-16 09:55:53"
         },
         {
             "name": "3ev/wordpress-core",
@@ -877,15 +877,15 @@
         },
         {
             "name": "wpackagist-plugin/quick-cache",
-            "version": 141231,
+            "version": 150129,
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/quick-cache/",
-                "reference": "tags/141231"
+                "reference": "tags/150129"
             },
             "dist": {
                 "type": "zip",
-                "url": "http://downloads.wordpress.org/plugin/quick-cache.141231.zip",
+                "url": "http://downloads.wordpress.org/plugin/quick-cache.150129.zip",
                 "reference": null,
                 "shasum": null
             },
