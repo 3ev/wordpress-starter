@@ -21,7 +21,8 @@ set :linked_files, []
 set :linked_dirs, [
   'storage/logs',
   'storage/database',
-  'public/app/uploads'
+  'public/app/uploads',
+  'public/app/cache'
 ]
 
 # Globally required system dependencies
@@ -35,6 +36,7 @@ set :server_deps, [
 
 SSHKit.config.command_map[:phing] = 'bin/phing'
 SSHKit.config.command_map[:wp] = 'bin/wp'
+SSHKit.config.command_map[:web_wp] = 'sudo -u www-data bin/wp'
 
 # Setup deployment hooks
 
