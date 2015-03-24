@@ -13,7 +13,18 @@ $ composer create-project 3ev/wordpress-starter -s dev
 
 ## Installing & running
 
-To install WordPress, run:
+Wordpress Starter comes with a base theme that uses [SASS](http://sass-lang.com/)
+and [Browserify](http://browserify.org/), so you'll need Ruby/Rubygems/Bundler
+and Node.js/NPM to install them.
+
+Once you've got those, install dependencies:
+
+```sh
+$ bundle install
+$ npm install
+```
+
+Then, to install WordPress, run:
 
 ```sh
 $ bin/phing build
@@ -61,8 +72,8 @@ to get a working copy of your site.
 
 ## Deploying with Capistrano
 
-Capistrano comes setup and ready to go with this project (via [Bundler](http://bundler.io/)),
-to make deployment as straightforward as possible.
+Capistrano comes setup and ready to go with this project to make deployment as
+straightforward as possible.
 
 After running `bundle install`, follow the guides to setting up a deployment
 user and the initial directory on http://capistranorb.com/. Then, modify the
