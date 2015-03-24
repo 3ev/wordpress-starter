@@ -1,0 +1,22 @@
+{
+  "name": "wordpress-starter",
+  "version": "0.0.1",
+  "description": "3ev Wordpress Starter NPM bundle",
+  "author": {
+    "name": "3ev",
+    "email": "dev@3ev.com",
+    "url": "http://www.3ev.com"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.3.4",
+    "browserify": "~6.2",
+    "browserify-shim": "~3.8",
+    "uglify-js": "~2.4",
+    "watchify": "~2.1"
+  },
+  "browserify-shim": "./public/app/themes/starter/assets/js/shim.js"
+}
