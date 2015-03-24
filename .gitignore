@@ -15,6 +15,7 @@ public/app/upgrade
 public/app/uploads/*
 public/app/themes/*
 !public/app/themes/.gitkeep
+!public/app/themes/starter
 public/app/cache/
 
 # Phingy
@@ -40,6 +41,11 @@ storage/logs/*
 !storage/logs/.gitkeep
 storage/database/*
 !storage/database/.gitkeep
+
+# Assets
+
+compiled.js
+compiled.css
 
 # Misc.
 
