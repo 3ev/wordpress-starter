@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "775e9a44e139197f7d5342d6cfcad1cc",
+    "hash": "ae97dc50368e6699b479a0387feac6d6",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -755,10 +755,10 @@
         },
         {
             "name": "wordpress",
-            "version": "4.1",
+            "version": "4.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/WordPress/WordPress/archive/4.1.zip",
+                "url": "https://github.com/WordPress/WordPress/archive/4.1.1.zip",
                 "reference": null,
                 "shasum": null
             },
