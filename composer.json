@@ -47,7 +47,7 @@
         "vlucas/phpdotenv": "~1.0",
         "3ev/phingy": "~0.10",
         "3ev/quick-cache-cli": "~1.0",
-        "3ev/wordpress-core": "~1.0",
+        "3ev/wordpress-core": "~1.3",
         "wp-cli/wp-cli": "~0.17",
         "wpackagist-theme/twentyfourteen": "~1.2",
         "wpackagist-plugin/quick-cache": "*"
