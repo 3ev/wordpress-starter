@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4808e4a977fc69b8f4c4f19e9673d49",
+    "hash": "fe51acaae705dc4b062e4b324c0fdf37",
     "packages": [
         {
             "name": "3ev/phingy",

@@ -110,19 +110,18 @@
         Generate fresh WordPress salts.
     -->
 
-    <taskdef name="addsalt" classname="Tev\Phing\Wordpress\GenerateSaltTask" />
     <target name="wordpress:generatesalts" depends="project:config" description="Generate fresh WordPress salts">
         <delete file="${build.path}/.env.salts" quiet="true" />
         <touch file="${build.path}/.env.salts" />
 
-        <addsalt path="${build.path}/.env.salts" name="AUTH_KEY" />
-        <addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_KEY" />
-        <addsalt path="${build.path}/.env.salts" name="LOGGED_IN_KEY" />
-        <addsalt path="${build.path}/.env.salts" name="NONCE_KEY" />
-        <addsalt path="${build.path}/.env.salts" name="AUTH_SALT" />
-        <addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_SALT" />
-        <addsalt path="${build.path}/.env.salts" name="LOGGED_IN_SALT" />
-        <addsalt path="${build.path}/.env.salts" name="NONCE_SALT" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="AUTH_KEY" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_KEY" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="LOGGED_IN_KEY" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="NONCE_KEY" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="AUTH_SALT" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_SALT" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="LOGGED_IN_SALT" />
+        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="NONCE_SALT" />
     </target>
 
 

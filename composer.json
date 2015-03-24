@@ -54,7 +54,7 @@
 
     "scripts": {
         "post-install-cmd": [
-            "Ev\\Phingy\\ComposerScripts::postInstall"
+            "Tev\\Phingy\\ComposerScripts::postInstall"
         ]
     },
 
