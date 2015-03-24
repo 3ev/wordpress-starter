@@ -1,7 +1,7 @@
 namespace :deploy do
 
   #
-  # This task runs `wp quick-cache clear`.
+  # This task runs `wp zencache clear`.
   #
   # This will clear out all site caches.
   #
@@ -9,7 +9,7 @@ namespace :deploy do
   task :clear_cache do
     on roles(:app) do
       within release_path do
-        execute :web_wp, 'quick-cache', 'clear'
+        execute :web_wp, 'zencache', 'clear'
       end
     end
   end
