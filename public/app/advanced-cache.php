@@ -1,51 +1,55 @@
 <?php
 /**
- * Quick Cache (Advanced Cache Handler)
+ * ZenCache (Advanced Cache Handler)
  *
- * This file serves as a template for the Quick Cache plugin in WordPress.
- * The Quick Cache plugin will fill the `%%` replacement codes automatically.
+ * This file serves as a template for the ZenCache plugin in WordPress.
+ * The ZenCache plugin will fill the `%%` replacement codes automatically.
  *    This file becomes: `/wp-content/advanced-cache.php`.
  *
- * @package quick_cache\advanced_cache
+ * @package zencache\advanced_cache
  * @since 140422 First documented version.
  * @copyright WebSharks, Inc. <http://www.websharks-inc.com>
  * @license GNU General Public License, version 2
  */
-namespace quick_cache
+namespace zencache
 {
     if(!defined('WPINC')) // MUST have WordPress.
         exit('Do NOT access this file directly: '.basename(__FILE__));
 
-    /**
-     * Quick Cache Pro flag.
-     *
-     * @since 140422 First documented version.
-     *
-     * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
-     */
-    define('QUICK_CACHE_PRO', FALSE); // Note that we do NOT check `if(defined())` here.
+    advanced_cache_back_compat::QUICK_CACHE_constants();
+    advanced_cache_back_compat::qcAC_qcABC_vars();
 
-    if(!defined('QUICK_CACHE_ENABLE'))
+    if(!defined('ZENCACHE_PRO'))
         /**
-         * Is Quick Cache enabled?
+         * ZenCache Pro flag.
          *
          * @since 140422 First documented version.
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          */
-        define('QUICK_CACHE_ENABLE', '1');
+        define('ZENCACHE_PRO', FALSE); // Lite version.
 
-    if(!defined('QUICK_CACHE_DEBUGGING_ENABLE'))
+    if(!defined('ZENCACHE_ENABLE'))
         /**
-         * Is Quick Cache debugging enabled?
+         * Is ZenCache enabled?
          *
          * @since 140422 First documented version.
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          */
-        define('QUICK_CACHE_DEBUGGING_ENABLE', '0');
+        define('ZENCACHE_ENABLE', '1');
 
-    if(!defined('QUICK_CACHE_ALLOW_BROWSER_CACHE'))
+    if(!defined('ZENCACHE_DEBUGGING_ENABLE'))
+        /**
+         * Is ZenCache debugging enabled?
+         *
+         * @since 140422 First documented version.
+         *
+         * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
+         */
+        define('ZENCACHE_DEBUGGING_ENABLE', '0');
+
+    if(!defined('ZENCACHE_ALLOW_BROWSER_CACHE'))
         /**
          * Allow browsers to cache each document?
          *
@@ -53,12 +57,12 @@ namespace quick_cache
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          *
-         * @note If this is a `FALSE` (or an empty) value; Quick Cache will send no-cache headers.
-         *    If `TRUE`, Quick Cache will NOT send no-cache headers.
+         * @note If this is a `FALSE` (or an empty) value; ZenCache will send no-cache headers.
+         *    If `TRUE`, ZenCache will NOT send no-cache headers.
          */
-        define('QUICK_CACHE_ALLOW_BROWSER_CACHE', '0');
+        define('ZENCACHE_ALLOW_BROWSER_CACHE', '0');
 
-    if(!defined('QUICK_CACHE_GET_REQUESTS'))
+    if(!defined('ZENCACHE_GET_REQUESTS'))
         /**
          * Cache `$_GET` requests w/ a query string?
          *
@@ -66,9 +70,9 @@ namespace quick_cache
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          */
-        define('QUICK_CACHE_GET_REQUESTS', '1');
+        define('ZENCACHE_GET_REQUESTS', '1');
 
-    if(!defined('QUICK_CACHE_CACHE_404_REQUESTS'))
+    if(!defined('ZENCACHE_CACHE_404_REQUESTS'))
         /**
          * Cache 404 errors?
          *
@@ -76,9 +80,9 @@ namespace quick_cache
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          */
-        define('QUICK_CACHE_CACHE_404_REQUESTS', '1');
+        define('ZENCACHE_CACHE_404_REQUESTS', '1');
 
-    if(!defined('QUICK_CACHE_FEEDS_ENABLE'))
+    if(!defined('ZENCACHE_FEEDS_ENABLE'))
         /**
          * Cache XML/RSS/Atom feeds?
          *
@@ -86,9 +90,9 @@ namespace quick_cache
          *
          * @var string|integer|boolean A boolean-ish value; e.g. `1` or `0`.
          */
-        define('QUICK_CACHE_FEEDS_ENABLE', '0');
+        define('ZENCACHE_FEEDS_ENABLE', '0');
 
-    if(!defined('QUICK_CACHE_DIR'))
+    if(!defined('ZENCACHE_DIR'))
         /**
          * Directory used to store cache files; relative to `WP_CONTENT_DIR`.
          *
@@ -96,9 +100,9 @@ namespace quick_cache
          *
          * @var string Absolute server directory path.
          */
-        define('QUICK_CACHE_DIR', WP_CONTENT_DIR.'/'.'cache/quick-cache/cache');
+        define('ZENCACHE_DIR', WP_CONTENT_DIR.'/'.'cache/zencache/cache');
 
-    if(!defined('QUICK_CACHE_MAX_AGE'))
+    if(!defined('ZENCACHE_MAX_AGE'))
         /**
          * Cache expiration time.
          *
@@ -106,9 +110,9 @@ namespace quick_cache
          *
          * @var string Anything compatible with PHP's {@link \strtotime()}.
          */
-        define('QUICK_CACHE_MAX_AGE', '7 days');
+        define('ZENCACHE_MAX_AGE', '1 hour');
 
-    if(!defined('QUICK_CACHE_404_CACHE_FILENAME'))
+    if(!defined('ZENCACHE_404_CACHE_FILENAME'))
         /**
          * 404 file name (if applicable).
          *
@@ -117,9 +121,9 @@ namespace quick_cache
          * @var string A unique file name that will not conflict with real paths.
          *    This should NOT include the extension; basename only please.
          */
-        define('QUICK_CACHE_404_CACHE_FILENAME', '----404----');
+        define('ZENCACHE_404_CACHE_FILENAME', '----404----');
 
-    if(!defined('QUICK_CACHE_PLUGIN_FILE'))
+    if(!defined('ZENCACHE_PLUGIN_FILE'))
         /**
          * Plugin file path.
          *
@@ -127,20 +131,20 @@ namespace quick_cache
          *
          * @var string Absolute server path to QC plugin file.
          */
-        define('QUICK_CACHE_PLUGIN_FILE', WP_CONTENT_DIR.'/plugins/quick-cache/quick-cache.php');
+        define('ZENCACHE_PLUGIN_FILE', WP_CONTENT_DIR.'/plugins/zencache/zencache.php');
 
     /*
      * Include shared methods between {@link advanced_cache} and {@link plugin}.
      */
     if(defined('WP_DEBUG') && WP_DEBUG)
-        require_once dirname(QUICK_CACHE_PLUGIN_FILE).'/includes/share.php';
-    else if((@require_once(dirname(QUICK_CACHE_PLUGIN_FILE).'/includes/share.php')) === FALSE)
+        require_once dirname(ZENCACHE_PLUGIN_FILE).'/includes/share.php';
+    else if((@require_once(dirname(ZENCACHE_PLUGIN_FILE).'/includes/share.php')) === FALSE)
         return; // Unable to find class dependency. Fail softly.
 
     /**
-     * Quick Cache (Advanced Cache Handler)
+     * ZenCache (Advanced Cache Handler)
      *
-     * @package quick_cache\advanced_cache
+     * @package zencache\advanced_cache
      * @since 140422 First documented version.
      */
     class advanced_cache extends share # `/wp-content/advanced-cache.php`
@@ -231,7 +235,7 @@ namespace quick_cache
          */
         public $postload = array(
             'filter_status_header' => TRUE, 'wp_main_query' => TRUE,
-            'set_debug_info'       => QUICK_CACHE_DEBUGGING_ENABLE,
+            'set_debug_info'       => ZENCACHE_DEBUGGING_ENABLE,
         );
 
         /**
@@ -329,7 +333,7 @@ namespace quick_cache
          *
          * @see wp_main_query_postload()
          */
-        public $plugin_file = QUICK_CACHE_PLUGIN_FILE;
+        public $plugin_file = ZENCACHE_PLUGIN_FILE;
 
         /**
          * No-cache because of the current {@link \PHP_SAPI}.
@@ -341,13 +345,13 @@ namespace quick_cache
         const NC_DEBUG_PHP_SAPI_CLI = 'nc_debug_php_sapi_cli';
 
         /**
-         * No-cache because the current request includes the `?qcAC=0` parameter.
+         * No-cache because the current request includes the `?zcAC=0` parameter.
          *
          * @since 140422 First documented version.
          *
          * @var string A unique string identifier in the set of `NC_DEBUG_` constants.
          */
-        const NC_DEBUG_QCAC_GET_VAR = 'nc_debug_qcac_get_var';
+        const NC_DEBUG_QCAC_GET_VAR = 'nc_debug_zcac_get_var';
 
         /**
          * No-cache because of a missing `$_SERVER['HTTP_HOST']`.
@@ -368,22 +372,22 @@ namespace quick_cache
         const NC_DEBUG_NO_SERVER_REQUEST_URI = 'nc_debug_no_server_request_uri';
 
         /**
-         * No-cache because the {@link \QUICK_CACHE_ALLOWED} constant says not to.
+         * No-cache because the {@link \ZENCACHE_ALLOWED} constant says not to.
          *
          * @since 140422 First documented version.
          *
          * @var string A unique string identifier in the set of `NC_DEBUG_` constants.
          */
-        const NC_DEBUG_QUICK_CACHE_ALLOWED_CONSTANT = 'nc_debug_quick_cache_allowed_constant';
+        const NC_DEBUG_ZENCACHE_ALLOWED_CONSTANT = 'nc_debug_zencache_allowed_constant';
 
         /**
-         * No-cache because the `$_SERVER['QUICK_CACHE_ALLOWED']` environment variable says not to.
+         * No-cache because the `$_SERVER['ZENCACHE_ALLOWED']` environment variable says not to.
          *
          * @since 140422 First documented version.
          *
          * @var string A unique string identifier in the set of `NC_DEBUG_` constants.
          */
-        const NC_DEBUG_QUICK_CACHE_ALLOWED_SERVER_VAR = 'nc_debug_quick_cache_allowed_server_var';
+        const NC_DEBUG_ZENCACHE_ALLOWED_SERVER_VAR = 'nc_debug_zencache_allowed_server_var';
 
         /**
          * No-cache because the {@link \DONOTCACHEPAGE} constant says not to.
@@ -565,7 +569,7 @@ namespace quick_cache
         {
             parent::__construct(); // Shared constructor.
 
-            if(!WP_CACHE || !QUICK_CACHE_ENABLE)
+            if(!WP_CACHE || !ZENCACHE_ENABLE)
                 return; // Not enabled.
 
             if(defined('WP_INSTALLING') || defined('RELOCATE'))
@@ -593,6 +597,9 @@ namespace quick_cache
             $GLOBALS[__NAMESPACE__.'__advanced_cache']
                 = $this; // Define now; so it's available for plugins.
 
+            if(!isset($GLOBALS['quick_cache__advanced_cache'])) // Back compat.
+                $GLOBALS['quick_cache__advanced_cache'] = &$GLOBALS[__NAMESPACE__.'__advanced_cache'];
+
             foreach((array)glob(WP_CONTENT_DIR.'/ac-plugins/*.php') as $_ac_plugin)
                 if(is_file($_ac_plugin)) include_once $_ac_plugin;
             unset($_ac_plugin); // Houskeeping.
@@ -603,7 +610,7 @@ namespace quick_cache
          *
          * @since 140605 Improving output buffer.
          *
-         * @note In `/wp-settings.php`, Quick Cache is loaded before WP registers its own shutdown function.
+         * @note In `/wp-settings.php`, ZenCache is loaded before WP registers its own shutdown function.
          * Therefore, this flag is set before {@link shutdown_action_hook()} fires, and thus before {@link wp_ob_end_flush_all()}.
          *
          * @see http://www.php.net/manual/en/function.register-shutdown-function.php
@@ -623,10 +630,10 @@ namespace quick_cache
          */
         public function maybe_stop_browser_caching()
         {
-            if(QUICK_CACHE_ALLOW_BROWSER_CACHE)
+            if(ZENCACHE_ALLOW_BROWSER_CACHE)
                 return; // Allow in this case.
 
-            if(!empty($_GET['qcABC']) && filter_var($_GET['qcABC'], FILTER_VALIDATE_BOOLEAN))
+            if(!empty($_GET['zcABC']) && filter_var($_GET['zcABC'], FILTER_VALIDATE_BOOLEAN))
                 return; // The query var says it's OK here.
 
             header_remove('Last-Modified');
@@ -640,7 +647,7 @@ namespace quick_cache
          *
          * @since 140422 First documented version.
          *
-         * @note This is a vital part of Quick Cache. This method serves existing (fresh) cache files.
+         * @note This is a vital part of ZenCache. This method serves existing (fresh) cache files.
          *    It is also responsible for beginning the process of collecting the output buffer.
          */
         public function maybe_start_output_buffering()
@@ -654,14 +661,14 @@ namespace quick_cache
             if(empty($_SERVER['REQUEST_URI']))
                 return $this->maybe_set_debug_info($this::NC_DEBUG_NO_SERVER_REQUEST_URI);
 
-            if(isset($_GET['qcAC']) && !filter_var($_GET['qcAC'], FILTER_VALIDATE_BOOLEAN))
+            if(isset($_GET['zcAC']) && !filter_var($_GET['zcAC'], FILTER_VALIDATE_BOOLEAN))
                 return $this->maybe_set_debug_info($this::NC_DEBUG_QCAC_GET_VAR);
 
-            if(defined('QUICK_CACHE_ALLOWED') && !QUICK_CACHE_ALLOWED)
-                return $this->maybe_set_debug_info($this::NC_DEBUG_QUICK_CACHE_ALLOWED_CONSTANT);
+            if(defined('ZENCACHE_ALLOWED') && !ZENCACHE_ALLOWED)
+                return $this->maybe_set_debug_info($this::NC_DEBUG_ZENCACHE_ALLOWED_CONSTANT);
 
-            if(isset($_SERVER['QUICK_CACHE_ALLOWED']) && !$_SERVER['QUICK_CACHE_ALLOWED'])
-                return $this->maybe_set_debug_info($this::NC_DEBUG_QUICK_CACHE_ALLOWED_SERVER_VAR);
+            if(isset($_SERVER['ZENCACHE_ALLOWED']) && !$_SERVER['ZENCACHE_ALLOWED'])
+                return $this->maybe_set_debug_info($this::NC_DEBUG_ZENCACHE_ALLOWED_SERVER_VAR);
 
             if(defined('DONOTCACHEPAGE'))
                 return $this->maybe_set_debug_info($this::NC_DEBUG_DONOTCACHEPAGE_CONSTANT);
@@ -675,7 +682,7 @@ namespace quick_cache
             if(isset($_SERVER['REMOTE_ADDR'], $_SERVER['SERVER_ADDR']) && $_SERVER['REMOTE_ADDR'] === $_SERVER['SERVER_ADDR'])
                 if(!$this->is_localhost()) return $this->maybe_set_debug_info($this::NC_DEBUG_SELF_SERVE_REQUEST);
 
-            if(!QUICK_CACHE_FEEDS_ENABLE && $this->is_feed())
+            if(!ZENCACHE_FEEDS_ENABLE && $this->is_feed())
                 return $this->maybe_set_debug_info($this::NC_DEBUG_FEED_REQUEST);
 
             if(preg_match('/\/(?:wp\-[^\/]+|xmlrpc)\.php(?:[?]|$)/i', $_SERVER['REQUEST_URI']))
@@ -690,17 +697,17 @@ namespace quick_cache
             if($this->is_like_user_logged_in()) // Commenters, password-protected access, or actually logged-in.
                 return $this->maybe_set_debug_info($this::NC_DEBUG_IS_LIKE_LOGGED_IN_USER);
 
-            if(!QUICK_CACHE_GET_REQUESTS && $this->is_get_request_w_query() && (!isset($_GET['qcAC']) || !filter_var($_GET['qcAC'], FILTER_VALIDATE_BOOLEAN)))
+            if(!ZENCACHE_GET_REQUESTS && $this->is_get_request_w_query() && (!isset($_GET['zcAC']) || !filter_var($_GET['zcAC'], FILTER_VALIDATE_BOOLEAN)))
                 return $this->maybe_set_debug_info($this::NC_DEBUG_GET_REQUEST_QUERIES);
 
             $this->protocol       = $this->is_ssl() ? 'https://' : 'http://';
             $this->version_salt   = $this->apply_filters(__CLASS__.'__version_salt', '');
             $this->cache_path     = $this->build_cache_path($this->protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], '', $this->version_salt);
-            $this->cache_file     = QUICK_CACHE_DIR.'/'.$this->cache_path; // NOT considering a user cache at all in the lite version.
-            $this->cache_file_404 = QUICK_CACHE_DIR.'/'.$this->build_cache_path($this->protocol.$_SERVER['HTTP_HOST'].'/'.QUICK_CACHE_404_CACHE_FILENAME);
+            $this->cache_file     = ZENCACHE_DIR.'/'.$this->cache_path; // NOT considering a user cache at all in the lite version.
+            $this->cache_file_404 = ZENCACHE_DIR.'/'.$this->build_cache_path($this->protocol.$_SERVER['HTTP_HOST'].'/'.ZENCACHE_404_CACHE_FILENAME);
             $this->salt_location  = ltrim($this->version_salt.' '.$this->protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 
-            if(is_file($this->cache_file) && filemtime($this->cache_file) >= strtotime('-'.QUICK_CACHE_MAX_AGE))
+            if(is_file($this->cache_file) && filemtime($this->cache_file) >= strtotime('-'.ZENCACHE_MAX_AGE))
             {
                 list($headers, $cache) = explode('<!--headers-->', file_get_contents($this->cache_file), 2);
 
@@ -710,12 +717,12 @@ namespace quick_cache
                         header($_header); // Only cacheable/safe headers are stored in the cache.
                 unset($_header); // Just a little housekeeping.
 
-                if(QUICK_CACHE_DEBUGGING_ENABLE && $this->is_html_xml_doc($cache)) // Only if HTML comments are possible.
+                if(ZENCACHE_DEBUGGING_ENABLE && $this->is_html_xml_doc($cache)) // Only if HTML comments are possible.
                 {
                     $total_time = number_format(microtime(TRUE) - $this->timer, 5, '.', '');
                     $cache .= "\n".'<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->';
                     // translators: This string is actually NOT translatable because the `__()` function is not available at this point in the processing.
-                    $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('Quick Cache fully functional :-) Cache file served for (%1$s) in %2$s seconds, on: %3$s.', $this->text_domain), $this->salt_location, $total_time, date('M jS, Y @ g:i a T'))).' -->';
+                    $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('%1$s fully functional :-) Cache file served for (%2$s) in %3$s seconds, on: %4$s.', $this->text_domain), $this->name, $this->salt_location, $total_time, date('M jS, Y @ g:i a T'))).' -->';
                 }
                 exit($cache); // Exit with cache contents.
             }
@@ -736,7 +743,7 @@ namespace quick_cache
          */
         public function maybe_set_debug_info($reason_code, $reason = '')
         {
-            if(!QUICK_CACHE_DEBUGGING_ENABLE)
+            if(!ZENCACHE_DEBUGGING_ENABLE)
                 return; // Nothing to do.
 
             $reason = (string)$reason;
@@ -774,7 +781,7 @@ namespace quick_cache
          */
         public function maybe_set_debug_info_postload()
         {
-            if(!QUICK_CACHE_DEBUGGING_ENABLE)
+            if(!ZENCACHE_DEBUGGING_ENABLE)
                 return; // Nothing to do.
 
             if(empty($this->postload['set_debug_info']))
@@ -789,7 +796,7 @@ namespace quick_cache
         }
 
         /**
-         * Grab details from WP and the Quick Cache plugin itself,
+         * Grab details from WP and the ZenCache plugin itself,
          *    after the main query is loaded (if at all possible).
          *
          * This is where we have a chance to grab any values we need from WordPress; or from the QC plugin.
@@ -820,7 +827,7 @@ namespace quick_cache
             $_this = $this; // Reference for the closure below.
             add_action('template_redirect', function () use ($_this)
             { // Move this AFTER `redirect_canonical` to avoid buggy WP behavior.
-                // See <https://github.com/websharks/quick-cache/issues/209#issuecomment-46999230>
+                // See <https://github.com/websharks/zencache/issues/209#issuecomment-46999230>
                 $_this->is_a_wp_content_type = $_this->is_404 || $_this->is_maintenance
                                                || is_front_page() // See <https://core.trac.wordpress.org/ticket/21602#comment:7>
                                                || is_home() || is_singular() || is_archive() || is_post_type_archive() || is_tax() || is_search() || is_feed();
@@ -851,6 +858,8 @@ namespace quick_cache
 
             # Exclusion checks; there are MANY of these...
 
+            advanced_cache_back_compat::QUICK_CACHE_constants();
+
             $cache = trim((string)$buffer);
             if(!isset($cache[0])) // Allows a `0`.
                 return FALSE; // Don't cache an empty buffer.
@@ -858,14 +867,14 @@ namespace quick_cache
             if(!isset($GLOBALS[__NAMESPACE__.'__shutdown_flag']))
                 return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_EARLY_BUFFER_TERMINATION);
 
-            if(isset($_GET['qcAC']) && !filter_var($_GET['qcAC'], FILTER_VALIDATE_BOOLEAN))
+            if(isset($_GET['zcAC']) && !filter_var($_GET['zcAC'], FILTER_VALIDATE_BOOLEAN))
                 return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_QCAC_GET_VAR);
 
-            if(defined('QUICK_CACHE_ALLOWED') && !QUICK_CACHE_ALLOWED)
-                return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_QUICK_CACHE_ALLOWED_CONSTANT);
+            if(defined('ZENCACHE_ALLOWED') && !ZENCACHE_ALLOWED)
+                return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_ZENCACHE_ALLOWED_CONSTANT);
 
-            if(isset($_SERVER['QUICK_CACHE_ALLOWED']) && !$_SERVER['QUICK_CACHE_ALLOWED'])
-                return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_QUICK_CACHE_ALLOWED_SERVER_VAR);
+            if(isset($_SERVER['ZENCACHE_ALLOWED']) && !$_SERVER['ZENCACHE_ALLOWED'])
+                return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_ZENCACHE_ALLOWED_SERVER_VAR);
 
             if(defined('DONOTCACHEPAGE')) // WP Super Cache compatible.
                 return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_DONOTCACHEPAGE_CONSTANT);
@@ -879,7 +888,7 @@ namespace quick_cache
             if($this->is_like_user_logged_in()) // Commenters, password-protected access, or actually logged-in.
                 return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_IS_LIKE_LOGGED_IN_USER); // Separate debug notice.
 
-            if($this->is_404 && !QUICK_CACHE_CACHE_404_REQUESTS) // Not caching 404 errors.
+            if($this->is_404 && !ZENCACHE_CACHE_404_REQUESTS) // Not caching 404 errors.
                 return (boolean)$this->maybe_set_debug_info($this::NC_DEBUG_404_REQUEST);
 
             if(stripos($cache, '<body id="error-page">') !== FALSE) // A WordPress-generated error?
@@ -912,19 +921,19 @@ namespace quick_cache
 
             # Cache directory checks. The cache file directory is created here if necessary.
 
-            if(!is_dir(QUICK_CACHE_DIR) && mkdir(QUICK_CACHE_DIR, 0775, TRUE) && !is_file(QUICK_CACHE_DIR.'/.htaccess'))
-                file_put_contents(QUICK_CACHE_DIR.'/.htaccess', $this->htaccess_deny); // We know it's writable here.
+            if(!is_dir(ZENCACHE_DIR) && mkdir(ZENCACHE_DIR, 0775, TRUE) && !is_file(ZENCACHE_DIR.'/.htaccess'))
+                file_put_contents(ZENCACHE_DIR.'/.htaccess', $this->htaccess_deny); // We know it's writable here.
 
             if(!is_dir($cache_file_dir = dirname($this->cache_file))) $cache_file_dir_writable = mkdir($cache_file_dir, 0775, TRUE);
             if(empty($cache_file_dir_writable) && !is_writable($cache_file_dir)) // Only check if it's writable, if we didn't just successfully create it.
-                throw new \exception(sprintf(__('Cache directory not writable. Quick Cache needs this directory please: `%1$s`. Set permissions to `755` or higher; `777` might be needed in some cases.', $this->text_domain), $cache_file_dir));
+                throw new \exception(sprintf(__('Cache directory not writable. %1$s needs this directory please: `%2$s`. Set permissions to `755` or higher; `777` might be needed in some cases.', $this->text_domain), $this->name, $cache_file_dir));
 
             # This is where a new 404 request might be detected for the first time; and where the 404 error file already exists in this case.
 
             if($this->is_404 && is_file($this->cache_file_404))
             {
                 if(!(symlink($this->cache_file_404, $cache_file_tmp) && rename($cache_file_tmp, $this->cache_file)))
-                    throw new \exception(sprintf(__('Unable to create symlink: `%1$s` » `%2$s`. Possible permissions issue (or race condition), please check your cache directory: `%3$s`.', $this->text_domain), $this->cache_file, $this->cache_file_404, QUICK_CACHE_DIR));
+                    throw new \exception(sprintf(__('Unable to create symlink: `%1$s` » `%2$s`. Possible permissions issue (or race condition), please check your cache directory: `%3$s`.', $this->text_domain), $this->cache_file, $this->cache_file_404, ZENCACHE_DIR));
 
                 $this->cache_unlock($cache_lock); // Unlock cache directory.
 
@@ -932,13 +941,13 @@ namespace quick_cache
             }
             /* ------- Otherwise, we need to construct & store a new cache file. ----------------------------------------------- */
 
-            if(QUICK_CACHE_DEBUGGING_ENABLE && $this->is_html_xml_doc($cache)) // Only if HTML comments are possible.
+            if(ZENCACHE_DEBUGGING_ENABLE && $this->is_html_xml_doc($cache)) // Only if HTML comments are possible.
             {
                 $total_time = number_format(microtime(TRUE) - $this->timer, 5, '.', '');
-                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('Quick Cache file path: %1$s', $this->text_domain), str_replace(WP_CONTENT_DIR, '', $this->is_404 ? $this->cache_file_404 : $this->cache_file))).' -->';
-                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('Quick Cache file built for (%1$s) in %2$s seconds, on: %3$s.', $this->text_domain),
-                                                                ($this->is_404) ? '404 [error document]' : $this->salt_location, $total_time, date('M jS, Y @ g:i a T'))).' -->';
-                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('This Quick Cache file will auto-expire (and be rebuilt) on: %1$s (based on your configured expiration time).', $this->text_domain), date('M jS, Y @ g:i a T', strtotime('+'.QUICK_CACHE_MAX_AGE)))).' -->';
+                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('%1$s file path: %2$s', $this->text_domain), $this->name, str_replace(WP_CONTENT_DIR, '', $this->is_404 ? $this->cache_file_404 : $this->cache_file))).' -->';
+                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('%1$s file built for (%2$s) in %3$s seconds, on: %4$s.', $this->text_domain),
+                                                                $this->name, $this->is_404 ? '404 [error document]' : $this->salt_location, $total_time, date('M jS, Y @ g:i a T'))).' -->';
+                $cache .= "\n".'<!-- '.htmlspecialchars(sprintf(__('This %1$s file will auto-expire (and be rebuilt) on: %2$s (based on your configured expiration time).', $this->text_domain), $this->name, date('M jS, Y @ g:i a T', strtotime('+'.ZENCACHE_MAX_AGE)))).' -->';
             }
             # NOT a 404, or it is 404 and the 404 cache file doesn't yet exist (so we need to create it).
 
@@ -947,7 +956,7 @@ namespace quick_cache
                 if(file_put_contents($cache_file_tmp, serialize($this->cacheable_headers_list()).'<!--headers-->'.$cache) && rename($cache_file_tmp, $this->cache_file_404))
                 {
                     if(!(symlink($this->cache_file_404, $cache_file_tmp) && rename($cache_file_tmp, $this->cache_file)))
-                        throw new \exception(sprintf(__('Unable to create symlink: `%1$s` » `%2$s`. Possible permissions issue (or race condition), please check your cache directory: `%3$s`.', $this->text_domain), $this->cache_file, $this->cache_file_404, QUICK_CACHE_DIR));
+                        throw new \exception(sprintf(__('Unable to create symlink: `%1$s` » `%2$s`. Possible permissions issue (or race condition), please check your cache directory: `%3$s`.', $this->text_domain), $this->cache_file, $this->cache_file_404, ZENCACHE_DIR));
 
                     $this->cache_unlock($cache_lock); // Unlock cache directory.
 
@@ -962,7 +971,7 @@ namespace quick_cache
             }
             @unlink($cache_file_tmp); // Clean this up (if it exists); and throw an exception with information for the site owner.
 
-            throw new \exception(sprintf(__('Quick Cache: failed to write cache file for: `%1$s`; possible permissions issue (or race condition), please check your cache directory: `%2$s`.', $this->text_domain), $_SERVER['REQUEST_URI'], QUICK_CACHE_DIR));
+            throw new \exception(sprintf(__('%1$s: failed to write cache file for: `%2$s`; possible permissions issue (or race condition), please check your cache directory: `%3$s`.', $this->text_domain), $this->name, $_SERVER['REQUEST_URI'], ZENCACHE_DIR));
         }
 
         /**
@@ -974,7 +983,7 @@ namespace quick_cache
          */
         public function maybe_echo_nc_debug_info() // Debug info in the shutdown phase.
         {
-            if(!QUICK_CACHE_DEBUGGING_ENABLE)
+            if(!ZENCACHE_DEBUGGING_ENABLE)
                 return; // Nothing to do.
 
             if(is_admin()) return; // Not applicable.
@@ -998,7 +1007,7 @@ namespace quick_cache
          */
         public function maybe_get_nc_debug_info($reason_code = '', $reason = '')
         {
-            if(!QUICK_CACHE_DEBUGGING_ENABLE)
+            if(!ZENCACHE_DEBUGGING_ENABLE)
                 return ''; // Not applicable.
 
             $reason = (string)$reason;
@@ -1012,7 +1021,7 @@ namespace quick_cache
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_QCAC_GET_VAR:
-                    $reason = __('because `$_GET[\'qcAC\']` is set to a boolean-ish FALSE value.', $this->text_domain);
+                    $reason = __('because `$_GET[\'zcAC\']` is set to a boolean-ish FALSE value.', $this->text_domain);
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_NO_SERVER_HTTP_HOST:
@@ -1023,12 +1032,12 @@ namespace quick_cache
                     $reason = __('because `$_SERVER[\'REQUEST_URI\']` is missing from your server configuration.', $this->text_domain);
                     break; // Break switch handler.
 
-                case $this::NC_DEBUG_QUICK_CACHE_ALLOWED_CONSTANT:
-                    $reason = __('because the PHP constant `QUICK_CACHE_ALLOWED` has been set to a boolean-ish `FALSE` value at runtime. Perhaps by WordPress itself, or by one of your themes/plugins. This usually means that you have a theme/plugin intentionally disabling the cache on this page; and it\'s usually for a very good reason.', $this->text_domain);
+                case $this::NC_DEBUG_ZENCACHE_ALLOWED_CONSTANT:
+                    $reason = __('because the PHP constant `ZENCACHE_ALLOWED` has been set to a boolean-ish `FALSE` value at runtime. Perhaps by WordPress itself, or by one of your themes/plugins. This usually means that you have a theme/plugin intentionally disabling the cache on this page; and it\'s usually for a very good reason.', $this->text_domain);
                     break; // Break switch handler.
 
-                case $this::NC_DEBUG_QUICK_CACHE_ALLOWED_SERVER_VAR:
-                    $reason = __('because the environment variable `$_SERVER[\'QUICK_CACHE_ALLOWED\']` has been set to a boolean-ish `FALSE` value at runtime. Perhaps by WordPress itself, or by one of your themes/plugins. This usually means that you have a theme/plugin intentionally disabling the cache on this page; and it\'s usually for a very good reason.', $this->text_domain);
+                case $this::NC_DEBUG_ZENCACHE_ALLOWED_SERVER_VAR:
+                    $reason = __('because the environment variable `$_SERVER[\'ZENCACHE_ALLOWED\']` has been set to a boolean-ish `FALSE` value at runtime. Perhaps by WordPress itself, or by one of your themes/plugins. This usually means that you have a theme/plugin intentionally disabling the cache on this page; and it\'s usually for a very good reason.', $this->text_domain);
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_DONOTCACHEPAGE_CONSTANT:
@@ -1081,7 +1090,7 @@ namespace quick_cache
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_OB_ZLIB_CODING_TYPE:
-                    $reason = __('because Quick Cache is unable to cache already-compressed output. Please use `mod_deflate` w/ Apache; or use `zlib.output_compression` in your `php.ini` file. Quick Cache is NOT compatible with `ob_gzhandler()` and others like this.', $this->text_domain);
+                    $reason = sprintf(__('because %1$s is unable to cache already-compressed output. Please use `mod_deflate` w/ Apache; or use `zlib.output_compression` in your `php.ini` file. %1$s is NOT compatible with `ob_gzhandler()` and others like this.', $this->text_domain), $this->name);
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_WP_ERROR_PAGE:
@@ -1097,29 +1106,88 @@ namespace quick_cache
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_1ST_TIME_404_SYMLINK:
-                    $reason = __('because the WordPress `is_404()` Conditional Tag says the current page is a 404 error; and this is the first time it\'s happened on this page. Your current configuration says that 404 errors SHOULD be cached, so Quick Cache built a cached symlink which points future requests for this location to your already-cached 404 error document. If you reload this page (assuming you don\'t clear the cache before you do so); you should get a cached version of your 404 error document. This message occurs ONCE for each new/unique 404 error request.', $this->text_domain);
+                    $reason = sprintf(__('because the WordPress `is_404()` Conditional Tag says the current page is a 404 error; and this is the first time it\'s happened on this page. Your current configuration says that 404 errors SHOULD be cached, so %1$s built a cached symlink which points future requests for this location to your already-cached 404 error document. If you reload this page (assuming you don\'t clear the cache before you do so); you should get a cached version of your 404 error document. This message occurs ONCE for each new/unique 404 error request.', $this->text_domain), $this->name);
                     break; // Break switch handler.
 
                 case $this::NC_DEBUG_EARLY_BUFFER_TERMINATION:
-                    $reason = __('because Quick Cache detected an early output buffer termination. This may happen when a theme/plugin ends, cleans, or flushes all output buffers before reaching the PHP shutdown phase. It\'s not always a bad thing. Sometimes it is necessary for a theme/plugin to do this. However, in this scenario it is NOT possible to cache the output; since Quick Cache is effectively disabled at runtime when this occurs.', $this->text_domain);
+                    $reason = sprintf(__('because %1$s detected an early output buffer termination. This may happen when a theme/plugin ends, cleans, or flushes all output buffers before reaching the PHP shutdown phase. It\'s not always a bad thing. Sometimes it is necessary for a theme/plugin to do this. However, in this scenario it is NOT possible to cache the output; since %1$s is effectively disabled at runtime when this occurs.', $this->text_domain), $this->name);
                     break; // Break switch handler.
 
                 default: // Default case handler.
                     $reason = __('due to an unexpected behavior in the application. Please report this as a bug!', $this->text_domain);
                     break; // Break switch handler.
             }
-            return "\n".'<!-- '.htmlspecialchars(sprintf(__('Quick Cache is NOT caching this page, %1$s', $this->text_domain), $reason)).' -->';
+            return "\n".'<!-- '.htmlspecialchars(sprintf(__('%1$s is NOT caching this page, %2$s', $this->text_domain), $this->name, $reason)).' -->';
+        }
+    }
+
+    class advanced_cache_back_compat // No extender; we need this up above.
+    {
+        /**
+         * Back compat. with `qcAC` and `qcABC`.
+         *
+         * @since 150218 First documented version.
+         */
+        public static function qcAC_qcABC_vars()
+        {
+            $super_gs    = array(
+                '_GET'     => &$_GET,
+                '_REQUEST' => &$_REQUEST,
+            );
+            $qc_suffixes = array('AC', 'ABC');
+
+            foreach($super_gs as $_super_g_key => &$_super_g_value) foreach($qc_suffixes as $_qc_suffix)
+                if(array_key_exists('qc'.$_qc_suffix, $_super_g_value))
+                {
+                    if($_super_g_key === '_GET' && !isset($_GET['zc'.$_qc_suffix]))
+                        $_GET['zc'.$_qc_suffix] = $_super_g_value['qc'.$_qc_suffix];
+
+                    foreach($super_gs as $__super_g_key => &$__super_g_value)
+                        unset($__super_g_value['qc'.$_qc_suffix]);
+                    unset($__super_g_key, $__super_g_value); // Housekeeping.
+                }
+            unset($_super_g_key, $_super_g_value, $_qc_suffix);
+        }
+
+        /**
+         * Back compat. with `QUICK_CACHE_` constants.
+         *
+         * @since 150218 First documented version.
+         */
+        public static function QUICK_CACHE_constants()
+        {
+            if(!($constants = get_defined_constants(TRUE)) || empty($constants['user']))
+                return; // Nothing to do; i.e. no user-defined constants.
+
+            foreach($constants['user'] as $_constant => $_value)
+            {
+                if(stripos($_constant, 'QUICK_CACHE_') !== 0)
+                    continue; // Nothing to do here.
+
+                if(!($_constant_sub_name = substr($_constant, 12)))
+                    continue; // Nothing to do here.
+
+                if(!defined('ZENCACHE_'.$_constant_sub_name))
+                    define('ZENCACHE_'.$_constant_sub_name, $_value);
+            }
+            unset($_constant, $_value); // Housekeeping.
+
+            if(isset($_SERVER['QUICK_CACHE_ALLOWED']) && !isset($_SERVER['ZENCACHE_ALLOWED']))
+                $_SERVER['ZENCACHE_ALLOWED'] = $_SERVER['QUICK_CACHE_ALLOWED'];
         }
     }
 
     /**
-     * Global Quick Cache {@link advanced_cache} instance.
+     * Global ZenCache {@link advanced_cache} instance.
      *
      * @since 140422 First documented version.
      *
      * @var advanced_cache Global instance reference.
      */
     $GLOBALS[__NAMESPACE__.'__advanced_cache'] = new advanced_cache();
+
+    if(!isset($GLOBALS['quick_cache__advanced_cache'])) // Back compat.
+        $GLOBALS['quick_cache__advanced_cache'] = &$GLOBALS[__NAMESPACE__.'__advanced_cache'];
 }
 namespace // Global namespace.
 {
@@ -1132,8 +1200,8 @@ namespace // Global namespace.
      */
     function wp_cache_postload() // See: `wp-settings.php`.
     {
-        $advanced_cache = $GLOBALS['quick_cache__advanced_cache'];
-        /** @var $advanced_cache \quick_cache\advanced_cache */
+        $advanced_cache = $GLOBALS['zencache__advanced_cache'];
+        /** @var $advanced_cache \zencache\advanced_cache */
         if(!$advanced_cache->is_running) return;
 
         if(!empty($advanced_cache->postload['filter_status_header']))
