@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae97dc50368e6699b479a0387feac6d6",
+    "hash": "f59c16ba12d849de86fb4bc2302c47a6",
     "packages": [
         {
             "name": "3ev/phingy",
-            "version": "v0.9.1",
+            "version": "v0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/phingy.git",
-                "reference": "9d4d594583ffafb5f2bf5dd977dd13de19be8c2b"
+                "reference": "9e7d3ae9730337ea2b84b74a600c7ba93c77d1e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/phingy/zipball/9d4d594583ffafb5f2bf5dd977dd13de19be8c2b",
-                "reference": "9d4d594583ffafb5f2bf5dd977dd13de19be8c2b",
+                "url": "https://api.github.com/repos/3ev/phingy/zipball/9e7d3ae9730337ea2b84b74a600c7ba93c77d1e8",
+                "reference": "9e7d3ae9730337ea2b84b74a600c7ba93c77d1e8",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,7 @@
             ],
             "description": "A useful collection of build scripts for managing PHP sites",
             "homepage": "http://github.com/3ev/phingy",
-            "time": "2014-12-04 18:08:02"
+            "time": "2015-02-16 15:34:55"
         },
         {
             "name": "3ev/quick-cache-cli",
