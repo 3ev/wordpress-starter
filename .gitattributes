@@ -6,4 +6,4 @@ config/deploy.rb export-ignore
 .jshintrc export-ignore
 Capfile export-ignore
 README.md export-ignore
-LICENSE.md export-ignore
+LICENSE export-ignore
