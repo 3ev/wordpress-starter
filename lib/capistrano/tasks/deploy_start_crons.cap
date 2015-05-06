@@ -12,6 +12,7 @@ namespace :deploy do
           execute :phing, 'project:cron:start'
         else
           info 'Crons disabled for target env'
+          execute :phing, 'project:cron:stop'
         end
       end
     end
