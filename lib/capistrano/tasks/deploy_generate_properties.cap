@@ -15,6 +15,7 @@ namespace :deploy do
 
         'build.basename' => File.basename("#{fetch :deploy_to}"),
         'build.name'     => File.basename("#{fetch :deploy_to}"),
+        'build.environment' => "#{fetch :build_environment}",
         'build.url'      => "#{fetch :build_url}",
         'db.host'        => "#{fetch :db_host}",
         'db.user'        => "#{fetch :db_user}",
