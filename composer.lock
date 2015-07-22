@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "41300d4fc5844b65127b4efc8f6af9b5",
+    "hash": "863022c34dea7a30306dd1b94ab0a5f1",
     "packages": [
         {
             "name": "3ev/phingy",
-            "version": "v0.11.0",
+            "version": "v0.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/phingy.git",
-                "reference": "1caf2008255e4361a31321062e29ee623e80cb28"
+                "reference": "e3af6431c37d33010230413c6974f60777efab0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/phingy/zipball/1caf2008255e4361a31321062e29ee623e80cb28",
-                "reference": "1caf2008255e4361a31321062e29ee623e80cb28",
+                "url": "https://api.github.com/repos/3ev/phingy/zipball/e3af6431c37d33010230413c6974f60777efab0e",
+                "reference": "e3af6431c37d33010230413c6974f60777efab0e",
                 "shasum": ""
             },
             "require": {
@@ -39,7 +39,7 @@
             ],
             "description": "A useful collection of build scripts for managing PHP sites",
             "homepage": "http://github.com/3ev/phingy",
-            "time": "2015-03-24 12:18:28"
+            "time": "2015-06-03 14:28:53"
         },
         {
             "name": "3ev/wordpress-core",
