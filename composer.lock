@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "07f6f7cc4b3f8f6fa5ea97b6a04327bf",
+    "hash": "41300d4fc5844b65127b4efc8f6af9b5",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -43,16 +43,16 @@
         },
         {
             "name": "3ev/wordpress-core",
-            "version": "v1.3.1",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/wordpress-core.git",
-                "reference": "dc01757878dbd086acad6026c7ba5658ff4d162b"
+                "reference": "5385a258e54a52fa89f72abf9629f450738beaea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/dc01757878dbd086acad6026c7ba5658ff4d162b",
-                "reference": "dc01757878dbd086acad6026c7ba5658ff4d162b",
+                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/5385a258e54a52fa89f72abf9629f450738beaea",
+                "reference": "5385a258e54a52fa89f72abf9629f450738beaea",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "modern",
                 "wordpress"
             ],
-            "time": "2015-03-13 09:10:11"
+            "time": "2015-07-21 14:52:19"
         },
         {
             "name": "3ev/zencache-cli",

@@ -46,7 +46,7 @@
         "fancyguy/webroot-installer": "~1.1",
         "vlucas/phpdotenv": "~1.0",
         "3ev/phingy": "~0.11",
-        "3ev/wordpress-core": "~1.3",
+        "3ev/wordpress-core": "~1.7.0",
         "wp-cli/wp-cli": "~0.17",
         "wpackagist-plugin/zencache": "*",
         "3ev/zencache-cli": "~1.0"
