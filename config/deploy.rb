@@ -62,8 +62,4 @@ namespace :deploy do
 
   after :publishing, :clear_cache
 
-  # After publishing a new release or rolling back, setup project crons
-
-  after :publishing, :start_crons
-
 end

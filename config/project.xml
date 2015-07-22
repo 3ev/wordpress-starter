@@ -128,28 +128,6 @@
 
 
     <!--
-        Start cron scripts
-    -->
-
-    <target name="project:cron:start" description="Start all crons listed in config/crontab">
-        <echo msg="Starting crons..." />
-        <exec command="sudo cp ${build.path}/config/crontab /etc/cron.d/${build.name}" />
-        <echo msg="...done" />
-    </target>
-
-
-    <!--
-        Stop cron scripts
-    -->
-
-    <target name="project:cron:stop" description="Stop all crons listed in config/crontab">
-        <echo msg="Stopping crons..." />
-        <exec command="sudo rm /etc/cron.d/${build.name}" />
-        <echo msg="...done" />
-    </target>
-
-
-    <!--
         Compile site SASS to CSS.
     -->
 

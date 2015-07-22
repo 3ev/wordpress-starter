@@ -26,7 +26,3 @@ set :db_root_pass, ''
 # Turn on debug mode
 
 set :app_debug, true
-
-# Enable cronjobs
-
-set :enable_crons, false
