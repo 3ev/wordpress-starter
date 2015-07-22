@@ -951,15 +951,15 @@
         },
         {
             "name": "wpackagist-plugin/zencache",
-            "version": 150314,
+            "version": 150718,
             "source": {
                 "type": "svn",
                 "url": "http://plugins.svn.wordpress.org/zencache/",
-                "reference": "tags/150314"
+                "reference": "tags/150718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/zencache.150314.zip",
+                "url": "https://downloads.wordpress.org/plugin/zencache.150718.zip",
                 "reference": null,
                 "shasum": null
             },
