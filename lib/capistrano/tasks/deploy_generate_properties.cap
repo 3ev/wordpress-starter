@@ -23,7 +23,7 @@ namespace :deploy do
         'db.name'        => "#{fetch :db_name}",
         'db.root.user'   => "#{fetch :db_root_user}",
         'db.root.pass'   => "#{fetch :db_root_pass}",
-        'app.debug'      => "#{fetch :app_debug}"
+        'app.debug'      => fetch(:app_debug) ? "1" : "0"
 
       }.map { |k, v| "#{k}=#{v}" }.join("\n")
 
