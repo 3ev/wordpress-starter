@@ -16,4 +16,7 @@
     ErrorLog  ${build.log_dir}/apache_error.log
 
     AllowEncodedSlashes On
+    <IfModule php5_module>
+	    php_value newrelic.appname "XXXYYYZZZ"
+    </IfModule>    
 </VirtualHost>
