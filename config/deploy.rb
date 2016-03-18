@@ -25,13 +25,6 @@ set :linked_dirs, [
   'public/app/cache'
 ]
 
-# Globally required system dependencies
-
-set :server_deps, [
-  'bundler',
-  'composer'
-]
-
 # Setup command maps
 
 SSHKit.config.command_map[:phing] = 'bin/phing'
@@ -41,10 +34,6 @@ SSHKit.config.command_map[:web_wp] = 'sudo -u www-data bin/wp'
 # Setup deployment hooks
 
 namespace :deploy do
-
-  # Before starting any deployment, check for the correct server deps
-
-  before :starting, :check_server_deps
 
   # After creating a new release, install all dependencies, configure and
   # build
