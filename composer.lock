@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a2491e018ada844ba047601abb0214fa",
-    "content-hash": "64956341a9414fe79372a5de7f3f8a29",
+    "hash": "6ada6998cc6c23a36f81f2a3266acd9c",
+    "content-hash": "753af0ca672701f846d99442833d1275",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -1395,6 +1395,26 @@
                 "wordpress"
             ],
             "time": "2016-01-07 16:36:32"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "3.1.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/3.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.3.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
         },
         {
             "name": "wpackagist-plugin/zencache",

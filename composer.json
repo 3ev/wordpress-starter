@@ -49,7 +49,8 @@
         "3ev/wordpress-core": "~1.8.0",
         "wp-cli/wp-cli": "~0.22",
         "wpackagist-plugin/zencache": "*",
-        "3ev/zencache-cli": "~1.0"
+        "3ev/zencache-cli": "~1.0",
+        "wpackagist-plugin/wordpress-seo": "~3.1"
     },
 
     "scripts": {
