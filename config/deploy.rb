@@ -30,6 +30,7 @@ set :linked_dirs, [
 SSHKit.config.command_map[:phing] = 'bin/phing'
 SSHKit.config.command_map[:wp] = 'bin/wp'
 SSHKit.config.command_map[:web_wp] = 'sudo -u www-data bin/wp'
+SSHKit.config.command_map[:gulp] = 'node_modules/.bin/gulp'
 
 # Setup deployment hooks
 

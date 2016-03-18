@@ -15,6 +15,10 @@ bin/phing build
 bin/phing db:create
 bin/phing wordpress:install
 
+# Compile assets
+
+node_modules/.bin/gulp build
+
 # Start site
 
 sudo bin/phing build:server

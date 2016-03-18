@@ -14,6 +14,10 @@ composer install
 bin/phing build
 bin/phing db:update
 
+# Compile assets
+
+node_modules/.bin/gulp build
+
 # Start site
 
 sudo bin/phing build:server

@@ -1,13 +1,14 @@
 namespace :deploy do
 
   #
-  # This task simply runs `phing build`.
+  # This task simply runs `phing build` and compiles assets.
   #
   desc 'Build application'
   task :build do
     on roles(:app) do
       within release_path do
         execute :phing, 'build'
+        execute :gulp, 'build'
       end
     end
   end
