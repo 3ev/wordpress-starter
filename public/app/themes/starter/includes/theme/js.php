@@ -26,7 +26,7 @@ add_action('wp_enqueue_scripts', function () {
 
     // Browserify JS
 
-    $file = '/assets/js/compiled.js';
+    $file = '/assets/build/js/main.js';
     $path = get_template_directory() . $file;
     $url = get_template_directory_uri() . $file;
     $version = filemtime($path);

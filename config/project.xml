@@ -68,8 +68,6 @@
         <echo msg="Running project:build:after" />
         <phingcall target="wordpress:permissions" />
         <phingcall target="wordpress:generatesalts" />
-        <phingcall target="project:assets:compile:css" />
-        <phingcall target="project:assets:compile:javascript" />
     </target>
 
 
@@ -126,47 +124,6 @@
         <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_SALT" />
         <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="LOGGED_IN_SALT" />
         <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="NONCE_SALT" />
-    </target>
-
-
-    <!--
-        Compile site SASS to CSS.
-    -->
-
-    <target name="project:assets:compile:css" depends="project:config" description="Compile site SASS to CSS">
-        <phingy:assets:sass:update
-            in="${build.public_dir}/app/themes/starter/assets/sass/build.scss"
-            out="${build.public_dir}/app/themes/starter/assets/css/compiled.css"
-            loadPaths="${build.path}/node_modules/bootstrap-sass/assets/stylesheets"
-            bundler="true" />
-    </target>
-
-
-    <!--
-        Watch site SASS for changes.
-    -->
-
-    <target name="project:assets:watch:css" depends="project:config" description="Watch site SASS for changes">
-        <phingy:assets:sass:watch
-            watch="${build.public_dir}/app/themes/starter/assets/sass/build.scss"
-            out="${build.public_dir}/app/themes/starter/assets/css/compiled.css"
-            loadPaths="${build.path}/node_modules/bootstrap-sass/assets/stylesheets"
-            bundler="true" />
-    </target>
-
-
-    <!-- Compile site JavaScript. -->
-
-    <target name="project:assets:compile:javascript" depends="project:config" description="Compile site JavaScript">
-        <phingy:assets:browserify in="${build.public_dir}/app/themes/starter/assets/js/main.js" out="${build.public_dir}/app/themes/starter/assets/js/compiled.js" useLocal="true" globalTransforms="browserify-shim" />
-        <phingy:assets:uglifyjs in="${build.public_dir}/app/themes/starter/assets/js/compiled.js" out="${build.public_dir}/app/themes/starter/assets/js/compiled.js" useLocal="true" />
-    </target>
-
-
-    <!-- Watch site JavaScript for changes. -->
-
-    <target name="project:assets:watch:javascript" depends="project:config" description="Watch site JavaScript for changes">
-        <phingy:assets:watchify watch="${build.public_dir}/app/themes/starter/assets/js/main.js" out="${build.public_dir}/app/themes/starter/assets/js/compiled.js" useLocal="true" globalTransforms="browserify-shim" />
     </target>
 
 

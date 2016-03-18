@@ -7,16 +7,14 @@
 
 module.exports = {
     'jquery': {
-        'exports': 'global:jQuery'
-    },
+        exports: 'global:jQuery'
+    }
 
-    'modernizr': {
-        'exports': 'global:Modernizr'
-    },
+  , 'modernizr': {
+        exports: 'global:Modernizr'
+    }
 
-    'bootstrap-sass': {
-        'depends': {
-            'jquery': 'jQuery'
-        }
+  , 'tether': {
+        exports: 'Tether'
     }
 }

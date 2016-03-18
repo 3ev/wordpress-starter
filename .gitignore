@@ -25,11 +25,12 @@ config/phing.properties
 
 # Composer
 
-vendor/*
+vendor/
 
 # NPM
 
-node_modules
+node_modules/
+npm-debug.log
 
 # Bundler
 
@@ -44,13 +45,11 @@ storage/database/*
 
 # Assets
 
-compiled.js
-compiled.css
+*/**/assets/build/
 
 # Misc.
 
 bin/
 .env
 .env.salts
-.sass-cache
 config/httpd.conf

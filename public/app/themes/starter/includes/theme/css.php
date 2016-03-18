@@ -5,7 +5,7 @@
  */
 
 add_action('wp_enqueue_scripts', function () {
-    $file = '/assets/css/compiled.css';
+    $file = '/assets/build/css/main.css';
     $path = get_template_directory() . $file;
     $url = get_template_directory_uri() . $file;
     $version = filemtime($path);

@@ -6,4 +6,5 @@
 
 // Load the Bootstrap Javascript
 
-require('bootstrap-sass')
+require('tether')
+require('bootstrap')
