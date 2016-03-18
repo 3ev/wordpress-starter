@@ -19,29 +19,32 @@ if (!isset($_ENV)) {
 }
 
 if (file_exists(APP_ROOT_DIR . '/.env')) {
-    Dotenv::load(APP_ROOT_DIR);
+    $confDotenv = new Dotenv\Dotenv(APP_ROOT_DIR);
+    $confDotenv->load();
+    $confDotenv->required([
+        'DB_HOST',
+        'DB_NAME',
+        'DB_USER',
+        'DB_PASSWORD',
+        'WP_HOME',
+        'WP_SITEURL'
+    ]);
 }
 
 if (file_exists(APP_ROOT_DIR . '/.env.salts')) {
-    Dotenv::load(APP_ROOT_DIR, '.env.salts');
+    $saltsDotenv = new Dotenv\Dotenv(APP_ROOT_DIR, '.env.salts');
+    $saltsDotenv->load();
+    $saltsDotenv->required([
+        'AUTH_KEY',
+        'SECURE_AUTH_KEY',
+        'LOGGED_IN_KEY',
+        'NONCE_KEY',
+        'AUTH_SALT',
+        'SECURE_AUTH_SALT',
+        'LOGGED_IN_SALT',
+        'NONCE_SALT'
+    ]);
 }
-
-Dotenv::required([
-    'DB_HOST',
-    'DB_NAME',
-    'DB_USER',
-    'DB_PASSWORD',
-    'WP_HOME',
-    'WP_SITEURL',
-    'AUTH_KEY',
-    'SECURE_AUTH_KEY',
-    'LOGGED_IN_KEY',
-    'NONCE_KEY',
-    'AUTH_SALT',
-    'SECURE_AUTH_SALT',
-    'LOGGED_IN_SALT',
-    'NONCE_SALT'
-]);
 
 /*
  * Debugging/errors
