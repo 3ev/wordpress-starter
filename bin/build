@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# This script builds the site from an existing database.
+#
+
+# Install dependencies
+
+npm install
+composer install
+
+# Build using Phing
+
+bin/phing build
+bin/phing db:update
+
+# Start site
+
+sudo bin/phing build:server

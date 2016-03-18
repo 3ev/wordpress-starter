@@ -49,7 +49,9 @@ storage/database/*
 
 # Misc.
 
-bin/
+bin/*
+!bin/init
+!bin/build
 .env
 .env.salts
 config/httpd.conf
