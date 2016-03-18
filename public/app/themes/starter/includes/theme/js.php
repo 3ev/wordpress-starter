@@ -13,7 +13,7 @@ add_action('wp_enqueue_scripts', function () {
     // jQuery
 
     wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', '//code.jquery.com/jquery-1.11.1.min.js', false, null, true);
+    wp_enqueue_script('jquery', '//code.jquery.com/jquery-2.2.2.min.js', false, null, true);
     $deps[] = 'jquery';
 
     // Modernizr (this goes in the head, see http://v3.modernizr.com/docs/#installing)
