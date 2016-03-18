@@ -23,6 +23,6 @@ set :db_name, ''
 set :db_root_user, 'root'
 set :db_root_pass, ''
 
-# Turn on debug mode
+# Turn off debug mode
 
-set :app_debug, true
+set :app_debug, false
