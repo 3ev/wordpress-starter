@@ -50,7 +50,8 @@ $ bin/phing db:structure:dump
 $ bin/phing db:data:dump
 ```
 
-The data files will be dumped to `storage/database/`. Use [Phingy's Amazon S3 support](https://github.com/3ev/phingy#database-tasks--s3)) to distribute the files, then all developers have to do is:
+and [push to S3](https://github.com/3ev/phingy#database-tasks--s3) to distribute the files, then all developers have to
+do is:
 
 ```
 $ git clone git@github.com:you/your-wordpress.git my-wordpress-site/
@@ -119,3 +120,7 @@ By default, your `master` branch will be deployed, but you can deploy a differen
 ```sh
 $ BRANCH=cool-new-feature bundle exec cap [stage] deploy
 ```
+
+##License
+
+MIT &copy; 3ev
