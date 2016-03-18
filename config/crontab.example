@@ -9,4 +9,4 @@ MAILTO=""
 
 # Run Wordpress scheduled jobs every 5 minutes
 
-*/5 * * * * root curl http://siteurl.com/wp/wp-cron.php?doing_wp_cron
+*/5 * * * * root php -q /path/to/site/public/wp/wp-cron.php

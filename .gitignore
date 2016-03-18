@@ -54,4 +54,3 @@ bin/
 .env.salts
 .sass-cache
 config/httpd.conf
-config/crontab
