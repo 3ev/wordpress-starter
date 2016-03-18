@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a9de5c6351cc808658f04be8f5b629d9",
-    "content-hash": "be7034f921746080c5516ba200bdda2a",
+    "hash": "b325319100a1196d1d60ddcaebfb5974",
+    "content-hash": "9c0d675c045f0e246a6bc89aca4d504e",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -1402,6 +1402,26 @@
             "time": "2016-01-07 16:36:32"
         },
         {
+            "name": "wpackagist-plugin/comet-cache",
+            "version": 160227,
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/comet-cache/",
+                "reference": "tags/160227"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/comet-cache.160227.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/comet-cache/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-seo",
             "version": "3.1.1",
             "source": {
@@ -1420,26 +1440,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-seo/"
-        },
-        {
-            "name": "wpackagist-plugin/zencache",
-            "version": 160316,
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/zencache/",
-                "reference": "tags/160316"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/zencache.160316.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/zencache/"
         }
     ],
     "packages-dev": [],

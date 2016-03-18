@@ -104,6 +104,7 @@
         <exec command="bin/wp theme activate starter" passthru="true" />
         <exec command="bin/wp rewrite structure &quot;/%postname%/&quot;" passthru="true" />
         <exec command="bin/wp plugin activate wordpress-seo" passthru="true" />
+        <exec command="bin/wp plugin activate comet-cache" passthru="true" />
 
         <echo msg="...installation complete. Access your site at http://${build.url}/" />
     </target>

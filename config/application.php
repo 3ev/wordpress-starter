@@ -78,12 +78,6 @@ define('WP_CONTENT_DIR', APP_PUBLIC_DIR . CONTENT_DIR);
 define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
 
 /*
- * Caching
- */
-
-define('WP_CACHE', true);
-
-/*
  * DB settings
  */
 
