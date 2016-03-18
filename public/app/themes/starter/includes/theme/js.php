@@ -24,23 +24,11 @@ add_action('wp_enqueue_scripts', function () {
     $modernizrVersion = filemtime($modernizrPath);
     wp_enqueue_script('modernizr', $modernizrUrl, false, $modernizrVersion, false);
 
-    // JSON2, for old browsers
-
-    wp_deregister_script('json2');
-    wp_enqueue_script('json2', '//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js', false, null, true);
-    add_filter('script_loader_tag', function ($tag, $handle) {
-        if ($handle === 'json2') {
-            $tag = "<!--[if lte IE 8]>$tag<![endif]-->";
-        }
-        return $tag;
-    }, 10, 2);
-    $deps[] = 'json2';
-
     // Browserify JS
 
-    $file    = '/assets/js/compiled.js';
-    $path    = get_template_directory() . $file;
-    $url     = get_template_directory_uri() . $file;
+    $file = '/assets/js/compiled.js';
+    $path = get_template_directory() . $file;
+    $url = get_template_directory_uri() . $file;
     $version = filemtime($path);
 
     wp_enqueue_script('theme-main', $url, $deps, $version, true);
