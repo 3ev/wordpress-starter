@@ -26,7 +26,7 @@ if (file_exists(APP_ROOT_DIR . '/.env.salts')) {
     Dotenv::load(APP_ROOT_DIR, '.env.salts');
 }
 
-Dotenv::required(array(
+Dotenv::required([
     'DB_HOST',
     'DB_NAME',
     'DB_USER',
@@ -41,7 +41,7 @@ Dotenv::required(array(
     'SECURE_AUTH_SALT',
     'LOGGED_IN_SALT',
     'NONCE_SALT'
-));
+]);
 
 /*
  * Debugging/errors
@@ -106,14 +106,14 @@ $wp_local_package = 'en_GB';
  * Authentication Unique Keys and Salts
  */
 
-define('AUTH_KEY',         getenv('AUTH_KEY'));
-define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
-define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
-define('NONCE_KEY',        getenv('NONCE_KEY'));
-define('AUTH_SALT',        getenv('AUTH_SALT'));
+define('AUTH_KEY', getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY', getenv('NONCE_KEY'));
+define('AUTH_SALT', getenv('AUTH_SALT'));
 define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
-define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
-define('NONCE_SALT',       getenv('NONCE_SALT'));
+define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT', getenv('NONCE_SALT'));
 
 /*
  * Custom Settings
