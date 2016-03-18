@@ -14,6 +14,10 @@ define('APP_LOG_DIR', APP_STORAGE_DIR . '/logs');
  * .env.salts file in root
  */
 
+if (!isset($_ENV)) {
+    $_ENV = [];
+}
+
 if (file_exists(APP_ROOT_DIR . '/.env')) {
     Dotenv::load(APP_ROOT_DIR);
 }
