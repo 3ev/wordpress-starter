@@ -8,7 +8,7 @@
  */
 
 add_action('wp_enqueue_scripts', function () {
-    $deps = array();
+    $deps = [];
 
     // jQuery
 
@@ -28,7 +28,7 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_deregister_script('json2');
     wp_enqueue_script('json2', '//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js', false, null, true);
-    add_filter('script_loader_tag', function($tag, $handle) {
+    add_filter('script_loader_tag', function ($tag, $handle) {
         if ($handle === 'json2') {
             $tag = "<!--[if lte IE 8]>$tag<![endif]-->";
         }
@@ -44,5 +44,5 @@ add_action('wp_enqueue_scripts', function () {
     $version = filemtime($path);
 
     wp_enqueue_script('theme-main', $url, $deps, $version, true);
-    wp_localize_script('theme-main', 'themeAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('theme-main', 'themeAjax', ['ajaxurl' => admin_url('admin-ajax.php')]);
 });
