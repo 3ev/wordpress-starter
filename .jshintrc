@@ -6,9 +6,5 @@
     "jquery": true,
     "undef": true,
     "strict": false,
-    "asi": true,
-    "globals": {
-        "define": true,
-        "require": true
-    }
+    "asi": true
 }
