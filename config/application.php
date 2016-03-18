@@ -31,21 +31,6 @@ if (file_exists(APP_ROOT_DIR . '/.env')) {
     ]);
 }
 
-if (file_exists(APP_ROOT_DIR . '/.env.salts')) {
-    $saltsDotenv = new Dotenv\Dotenv(APP_ROOT_DIR, '.env.salts');
-    $saltsDotenv->load();
-    $saltsDotenv->required([
-        'AUTH_KEY',
-        'SECURE_AUTH_KEY',
-        'LOGGED_IN_KEY',
-        'NONCE_KEY',
-        'AUTH_SALT',
-        'SECURE_AUTH_SALT',
-        'LOGGED_IN_SALT',
-        'NONCE_SALT'
-    ]);
-}
-
 /*
  * Debugging/errors
  */

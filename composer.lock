@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b325319100a1196d1d60ddcaebfb5974",
-    "content-hash": "9c0d675c045f0e246a6bc89aca4d504e",
+    "hash": "788c4f3cb5b786893c1377068b09b904",
+    "content-hash": "a0d96deef4b7b405f0d152ee0a881ab6",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -164,6 +164,47 @@
                 "zencache"
             ],
             "time": "2015-03-03 11:08:50"
+        },
+        {
+            "name": "aaemnnosttv/wp-cli-dotenv-command",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aaemnnosttv/wp-cli-dotenv-command.git",
+                "reference": "640ab2c9388879eb0018e690e61ff87524613b51"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aaemnnosttv/wp-cli-dotenv-command/zipball/640ab2c9388879eb0018e690e61ff87524613b51",
+                "reference": "640ab2c9388879eb0018e690e61ff87524613b51",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "command.php",
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evan Mattson",
+                    "email": "me@aaemnnost.tv"
+                }
+            ],
+            "description": "Dotenv commands for WP-CLI",
+            "homepage": "https://github.com/aaemnnosttv/wp-cli-dotenv-command",
+            "time": "2015-08-04 16:30:49"
         },
         {
             "name": "composer/installers",

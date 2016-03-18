@@ -50,7 +50,8 @@
         "wp-cli/wp-cli": "~0.22",
         "3ev/zencache-cli": "~1.0",
         "wpackagist-plugin/wordpress-seo": "~3.1",
-        "wpackagist-plugin/comet-cache": "*"
+        "wpackagist-plugin/comet-cache": "*",
+        "aaemnnosttv/wp-cli-dotenv-command": "~0.1"
     },
 
     "scripts": {

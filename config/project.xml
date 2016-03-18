@@ -67,7 +67,7 @@
     <target name="project:build:after" hidden="true">
         <echo msg="Running project:build:after" />
         <phingcall target="wordpress:permissions" />
-        <phingcall target="wordpress:generatesalts" />
+        <exec command="bin/wp dotenv salts generate" passthru="true" />
     </target>
 
 
@@ -107,25 +107,6 @@
         <exec command="bin/wp plugin activate comet-cache" passthru="true" />
 
         <echo msg="...installation complete. Access your site at http://${build.url}/" />
-    </target>
-
-
-    <!--
-        Generate fresh WordPress salts.
-    -->
-
-    <target name="wordpress:generatesalts" depends="project:config" description="Generate fresh WordPress salts">
-        <delete file="${build.path}/.env.salts" quiet="true" />
-        <touch file="${build.path}/.env.salts" />
-
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="AUTH_KEY" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_KEY" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="LOGGED_IN_KEY" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="NONCE_KEY" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="AUTH_SALT" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="SECURE_AUTH_SALT" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="LOGGED_IN_SALT" />
-        <phingy:assets:wordpress:addsalt path="${build.path}/.env.salts" name="NONCE_SALT" />
     </target>
 
 
