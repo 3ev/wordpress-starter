@@ -103,6 +103,8 @@
         <input propertyname="wordpress.admin_email" defaultValue="">Admin email (must be wrapped in single quotes)?</input>
 
         <exec command="bin/wp core install --url='&quot;&quot;' --title='${wordpress.site_title}' --admin_user='${wordpress.admin_user}' --admin_password='${wordpress.admin_pass}' --admin_email='${wordpress.admin_email}'" passthru="true" />
+        <exec command="bin/wp theme activate starter" passthru="true" />
+        <exec command="bin/wp rewrite structure &quot;/%postname%/&quot;" passthru="true" />
 
         <echo msg="...installation complete. Access your site at http://${build.url}/" />
     </target>
