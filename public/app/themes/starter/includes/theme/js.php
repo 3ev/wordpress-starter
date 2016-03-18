@@ -16,7 +16,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('jquery', '//code.jquery.com/jquery-2.2.2.min.js', false, null, true);
     $deps[] = 'jquery';
 
-    // Modernizr (this goes in the head, see http://v3.modernizr.com/docs/#installing)
+    // Modernizr (this goes in the head, see https://modernizr.com/docs)
 
     $modernizr = '/assets/js/vendor/modernizr.js';
     $modernizrPath = get_template_directory() . $modernizr;
