@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "788c4f3cb5b786893c1377068b09b904",
-    "content-hash": "a0d96deef4b7b405f0d152ee0a881ab6",
+    "hash": "0e4e8b0bc0b06ccb34df9675ae92e8f2",
+    "content-hash": "6df2ac0b8a6640377f0972c29debd25b",
     "packages": [
         {
             "name": "3ev/phingy",
@@ -44,16 +44,16 @@
         },
         {
             "name": "3ev/wordpress-core",
-            "version": "v1.8.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/3ev/wordpress-core.git",
-                "reference": "0dbaabe1d8b7dcc26e8310a568e402bb3a018b07"
+                "reference": "6bebc87311a18767125546a89aa6b72c6dbbeaac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/0dbaabe1d8b7dcc26e8310a568e402bb3a018b07",
-                "reference": "0dbaabe1d8b7dcc26e8310a568e402bb3a018b07",
+                "url": "https://api.github.com/repos/3ev/wordpress-core/zipball/6bebc87311a18767125546a89aa6b72c6dbbeaac",
+                "reference": "6bebc87311a18767125546a89aa6b72c6dbbeaac",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -102,7 +102,7 @@
                 "modern",
                 "wordpress"
             ],
-            "time": "2015-09-22 16:49:00"
+            "time": "2016-02-26 10:25:02"
         },
         {
             "name": "3ev/zencache-cli",
