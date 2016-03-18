@@ -7,7 +7,6 @@ namespace :deploy do
   task :install_deps do
     on roles(:app) do
       within release_path do
-        execute :bundle, 'install', '--deployment', '--without', 'development'
         execute :npm, 'install'
         execute :composer, 'install', '--no-dev'
       end
