@@ -1,13 +1,13 @@
-#3ev WordPress Starter
+# 3ev WordPress Starter
 
 > A modern Wordpress environment
 
 This is the base WordPress environment that we use at 3ev. It borrows heavily from many of the ideas in the excellent
 [Bedrock project](https://github.com/roots/bedrock).
 
-##What's included?
+## What's included?
 
-####Tools and Setup
+#### Tools and Setup
 
 * Dependency management with [Composer](https://getcomposer.org/)
 * Configuration management with [Phpdotenv](https://github.com/vlucas/phpdotenv)
@@ -17,19 +17,19 @@ This is the base WordPress environment that we use at 3ev. It borrows heavily fr
 * A frontend workflow using [Gulp](http://gulpjs.com/), [Sass](http://sass-lang.com/libsass) and [Browserify](http://browserify.org/)
 * [Phingy](https://github.com/3ev/phingy) for build scripts and database management
 
-####Wordpress Plugins
+#### Wordpress Plugins
 
 * [Comet Cache](https://en-gb.wordpress.org/plugins/comet-cache/)
 * [Yoast SEO](https://en-gb.wordpress.org/plugins/wordpress-seo/)
 
-##Requirements
+## Requirements
 
 * PHP `>=5.5.9`
 * Composer
 * Node.js
 * Ruby/Rubygems/Bundler if you want to use Capistrano deployments
 
-##Installation
+## Installation
 
 ```
 $ composer create-project 3ev/wordpress-starter -s dev
@@ -40,7 +40,7 @@ $ bin/init
 This will install dependencies, prompt you for any configuration, compile assets, install Wordpress and start your site
 running on Apache.
 
-##Building from an existing site
+## Building from an existing site
 
 Once you've setup your WordPress site, you can easily create new builds for development or production. First, dump out
 your database with:
@@ -61,7 +61,7 @@ $ bin/build
 
 to get a working copy of your site.
 
-##Frontend Workflow
+## Frontend Workflow
 
 Wordpress Starter comes with a single theme, "3ev Starter Wordpress Theme" (`public/app/themes/starter/`), which is ready
 to use.
@@ -90,7 +90,7 @@ $ node_modules/.bin/gulp build:css
 
 You can also compile all assets or watch for changes during development - just use `gulp -T` to see all available tasks.
 
-##Deploying with Capistrano
+## Deploying with Capistrano
 
 Capistrano comes setup and ready to go with this project to make deployment as straightforward as possible. Just run:
 
@@ -112,7 +112,7 @@ $ bundle exec cap [stage] deploy
 
 **Note:** You'll need to setup your database separately after your first deployment.
 
-###Deploying a different branch
+### Deploying a different branch
 
 By default, your `master` branch will be deployed, but you can deploy a different branch for testing by setting the
 `BRANCH` environment variable, like:
@@ -121,6 +121,6 @@ By default, your `master` branch will be deployed, but you can deploy a differen
 $ BRANCH=cool-new-feature bundle exec cap [stage] deploy
 ```
 
-##License
+## License
 
 MIT &copy; 3ev
